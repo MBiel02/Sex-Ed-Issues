@@ -247,17 +247,11 @@ header {
   display: block;
 }
 
-.content-text {
-  position: fixed;
-  top: 20px;
-  overflow: hidden;
-}
-
 .mobile-image-scroll {
   /* Modify this */
   display: flex;
   flex-direction: column;
-  gap: var(--margin);
+  gap: calc( 2 * var(--margin));
   width: 100%;
 }
 
