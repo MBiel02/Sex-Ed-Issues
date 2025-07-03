@@ -56,6 +56,10 @@ i {
   letter-spacing: -40;
 }
 
+a {
+  color: black;
+}
+
 /* Desktop View */
 .desktop-view {
   display: flex;
