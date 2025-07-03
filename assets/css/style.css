@@ -243,6 +243,10 @@ header {
   padding-top: calc(60px + var(--margin)); /* Space for buttons */
 }
 
+.mobile-text {
+  position: fixed;
+}
+
 .mobile-content.active {
   display: block;
 }
