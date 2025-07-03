@@ -249,6 +249,7 @@ header {
 
 .content-text {
   position: fixed;
+  top: 0;
 }
 
 .mobile-image-scroll {
