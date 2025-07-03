@@ -208,7 +208,7 @@ header {
   width: 100%;
   z-index: 100;
   padding-top: var(--margin);
-  color: white;
+  color: black;
 }
 
 .mobile-tab {
@@ -216,6 +216,7 @@ header {
   font-weight: 400;
   border: 1px solid black;
   background-color: white;
+  color: black;
   padding: 5px 12px;
   border-radius: 100px;
   margin: 0;
@@ -226,6 +227,7 @@ header {
   font-weight: 400;
   border: 1px solid black;
   background-color: rgb(170, 190, 255);
+  color: black;
   padding: 5px 12px;
   border-radius: 100px;
   margin: 0;
