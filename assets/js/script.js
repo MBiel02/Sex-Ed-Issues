@@ -1,61 +1,3 @@
-
-
-
-// we make sure the JavaScript file loads after our HTML by using a function test if the HTML is loaded
-
-function docReady(fn) {
-  // see if DOM is already available
-  if (document.readyState === "complete" || document.readyState === "interactive") {
-      // call on next available tick
-      setTimeout(fn, 1);
-  } else {
-      document.addEventListener("DOMContentLoaded", fn);
-  }
-}   
-
-
-
-docReady(function() {
-
-	// functions
-	// go
-	// here
-
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Mobile tab switching
-  const tabs = document.querySelectorAll('.mobile-tab');
-  
-  tabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-      // Remove active class from all tabs and content
-      document.querySelectorAll('.mobile-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.mobile-content').forEach(c => c.classList.remove('active'));
-      
-      // Add active class to clicked tab and corresponding content
-      this.classList.add('active');
-      const tabId = this.getAttribute('data-tab');
-      document.getElementById(tabId).classList.add('active');
-    });
-  });
-});
-
-// Force scroll to bottom on load
-window.addEventListener('load', function() {
-  const leftSide = document.querySelector('.left-side');
-  leftSide.scrollTop = leftSide.scrollHeight;
-  
-  // // Reverse scroll direction (wheel/touch)
-  // leftSide.addEventListener('wheel', function(e) {
-  //   this.scrollTop -= e.deltaY;
-  //   e.preventDefault();
-  // });
-});
-
-
-
 // Book data
 const books = [
   {
@@ -77,8 +19,6 @@ const books = [
       'content/Issue_1/14.jpg'
     ]
   },
-
-  
   {
     cover: 'content/Issue_2/Cover.jpg',
     spreads: [
@@ -155,7 +95,13 @@ docReady(function() {
       document.querySelectorAll('.mobile-content').forEach(c => c.classList.remove('active'));
       this.classList.add('active');
       const tabId = this.getAttribute('data-tab');
-      document.getElementById(tabId).classList.add('active');
+      const contentDiv = document.getElementById(tabId);
+      contentDiv.classList.add('active');
+
+      // Scroll "about" tab to top on click
+      if (tabId === 'about') {
+        contentDiv.scrollTop = 0;
+      }
     });
   });
 
@@ -180,13 +126,11 @@ function initBooks(containerSelector) {
 }
 
 function createBookElement(book, bookIndex, container) {
-  // Create container div
   const bookContainer = document.createElement('div');
   bookContainer.className = 'book-container';
   bookContainer.dataset.bookIndex = bookIndex;
-  bookContainer.dataset.currentPage = '-1'; // Start with cover
+  bookContainer.dataset.currentPage = '-1';
 
-  // Create close button
   const closeBtn = document.createElement('div');
   closeBtn.className = 'close-btn';
   closeBtn.innerHTML = '✕';
@@ -195,19 +139,16 @@ function createBookElement(book, bookIndex, container) {
     resetToCover(bookContainer);
   });
 
-  // Create image element
   const img = document.createElement('img');
   img.className = 'book-image';
   img.src = book.cover;
   img.alt = `Issue ${bookIndex + 1}`;
   img.dataset.isAnimating = 'false';
 
-  // Assemble elements
   bookContainer.appendChild(img);
   bookContainer.appendChild(closeBtn);
   container.appendChild(bookContainer);
 
-  // Click handler
   bookContainer.addEventListener('click', function(e) {
     if (e.target.classList.contains('close-btn')) return;
     if (img.dataset.isAnimating === 'true') return;
@@ -219,20 +160,16 @@ function createBookElement(book, bookIndex, container) {
     img.dataset.isAnimating = 'true';
 
     if (isCover) {
-      // Cover → First spread
       img.src = book.spreads[0];
       this.dataset.currentPage = '0';
     } else if (isLastPage) {
-      // Last spread → Cover
       img.src = book.cover;
       this.dataset.currentPage = '-1';
     } else {
-      // Next spread
       img.src = book.spreads[currentPage + 1];
       this.dataset.currentPage = (currentPage + 1).toString();
     }
 
-    // Reset after load
     const tempImg = new Image();
     tempImg.onload = () => {
       img.dataset.isAnimating = 'false';
