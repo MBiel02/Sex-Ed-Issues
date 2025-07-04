@@ -184,3 +184,19 @@ function resetToCover(container) {
   img.src = books[bookIndex].cover;
   container.dataset.currentPage = '-1';
 }
+
+(function setAccentColor() {
+  const vibrantColors = [
+    '#E63946', // Red
+    '#F4A261', // Orange
+    '#E9C46A', // Yellow
+    '#2A9D8F', // Teal
+    '#457B9D', // Blue
+    '#9D4EDD', // Purple
+    '#FF006E', // Pink
+    '#00B4D8'  // Cyan
+  ];
+
+  const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
+  document.documentElement.style.setProperty('--accent-color', color);
+})();
