@@ -73,6 +73,17 @@ const books = [
   }
 ];
 
+(function setAccentColor() {
+  const vibrantColors = [
+    '#acec19', // Greenish
+    '#ffaa00', // Orange
+    '#388fff', // Blue
+  ];
+
+  const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
+  document.documentElement.style.setProperty('--accent-color', color);
+})();
+
 // DOM ready handler
 function docReady(fn) {
   if (document.readyState === "complete" || document.readyState === "interactive") {
@@ -185,13 +196,3 @@ function resetToCover(container) {
   container.dataset.currentPage = '-1';
 }
 
-(function setAccentColor() {
-  const vibrantColors = [
-    '#acec19', // Greenish
-    '#ffaa00', // Orange
-    '#388fff', // Blue
-  ];
-
-  const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
-  document.documentElement.style.setProperty('--accent-color', color);
-})();
