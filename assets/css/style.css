@@ -251,7 +251,7 @@ header {
   /* Modify this */
   display: flex;
   flex-direction: column;
-  gap: calc( 2 * var(--margin));
+  gap: var(--margin);
   width: 100%;
 }
 
