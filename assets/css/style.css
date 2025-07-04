@@ -153,6 +153,7 @@ header {
 }
 
 .fixed-title {
+  font-family: "acumin-pro", sans-serif;
   position: fixed;
   top: var(--margin);
   z-index: 100;
@@ -205,6 +206,7 @@ header {
 }
 
 .mobile-buttons {
+  font-family: "acumin-pro", sans-serif;
   display: flex;
   justify-content: space-around;
   position: fixed;
@@ -216,6 +218,7 @@ header {
 }
 
 .mobile-tab {
+  font-family: "acumin-pro", sans-serif;
   font-size: 16px;
   font-weight: 400;
   border: 1px solid black;
@@ -227,6 +230,7 @@ header {
 }
 
 .mobile-tab.active {
+  font-family: "acumin-pro", sans-serif;
   font-size: 16px;
   font-weight: 400;
   border: 1px solid black;
