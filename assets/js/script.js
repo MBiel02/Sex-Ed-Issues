@@ -187,14 +187,9 @@ function resetToCover(container) {
 
 (function setAccentColor() {
   const vibrantColors = [
-    '#E63946', // Red
-    '#F4A261', // Orange
-    '#E9C46A', // Yellow
-    '#2A9D8F', // Teal
-    '#457B9D', // Blue
-    '#9D4EDD', // Purple
-    '#FF006E', // Pink
-    '#00B4D8'  // Cyan
+    '#e1ff06', // Yellow
+    '#ffaa00', // Orange
+    '#388fff', // Blue
   ];
 
   const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
