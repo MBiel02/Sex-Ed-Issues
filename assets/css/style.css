@@ -60,7 +60,7 @@ i {
   letter-spacing: -40;
 }
 
-.italic-color {
+#italic-color {
   color: var(--accent-color);
 }
 

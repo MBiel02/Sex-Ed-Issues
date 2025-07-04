@@ -75,9 +75,9 @@ const books = [
 
 (function setAccentColor() {
   const vibrantColors = [
-    '#acec19', // Greenish
-    '#ffaa00', // Orange
-    '#388fff', // Blue
+    '#bfe900', // Greenish
+    '#ffd837 ', // Orange
+    '#409aff ', // Blue
   ];
 
   const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
