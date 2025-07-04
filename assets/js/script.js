@@ -187,7 +187,7 @@ function resetToCover(container) {
 
 (function setAccentColor() {
   const vibrantColors = [
-    '#e1ff06', // Yellow
+    '#acec19', // Greenish
     '#ffaa00', // Orange
     '#388fff', // Blue
   ];

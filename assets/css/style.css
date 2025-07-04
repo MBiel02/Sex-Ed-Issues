@@ -58,6 +58,9 @@ h3 {
 i {
   font-family: "Libre Baskerville", serif;
   letter-spacing: -40;
+}
+
+.italic-color {
   color: var(--accent-color);
 }
 
