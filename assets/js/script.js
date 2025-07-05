@@ -99,11 +99,7 @@ docReady(function() {
       contentDiv.classList.add('active');
 
       // Scroll "about" tab to top on click
-      if (tabId === 'about') {
-      requestAnimationFrame(() => {
-      contentDiv.scrollTop = 500; // or whatever value you want
-  });
-}
+      window.scrollTo(0,0);
     });
   });
 
