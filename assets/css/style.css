@@ -253,10 +253,14 @@ header {
   display: none;
   padding: var(--margin);
   padding-top: calc(60px + var(--margin)); /* Space for buttons */
+  overflow-y: auto;
 }
 
 .mobile-content.active {
   display: block;
+  padding: var(--margin);
+  padding-top: calc(60px + var(--margin)); /* Space for buttons */
+  overflow-y: auto;
 }
 
 .mobile-image-scroll {

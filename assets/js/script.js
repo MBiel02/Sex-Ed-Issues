@@ -100,8 +100,10 @@ docReady(function() {
 
       // Scroll "about" tab to top on click
       if (tabId === 'about') {
-        contentDiv.scrollTop = 0;
-      }
+      requestAnimationFrame(() => {
+      contentDiv.scrollTop = 500; // or whatever value you want
+  });
+}
     });
   });
 
@@ -184,3 +186,14 @@ function resetToCover(container) {
   img.src = books[bookIndex].cover;
   container.dataset.currentPage = '-1';
 }
+
+// Accent color randomizer
+(function setAccentColor() {
+  const vibrantColors = [
+    '#dff054', // Greena
+    '#9acbff', // Blue
+    '#ffd75c', // Orange
+  ];
+  const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
+  document.documentElement.style.setProperty('--accent-color', color);
+})();
