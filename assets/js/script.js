@@ -73,21 +73,6 @@ const books = [
   }
 ];
 
-// Accent color randomizer
-(function setAccentColor() {
-  const vibrantColors = [
-    '#e91e63', // pink
-    '#00c853', // green
-    '#2979ff', // blue
-    '#ff6d00', // orange
-    '#d500f9', // purple
-    '#c51162', // deep pink
-    '#00bfa5', // teal
-  ];
-  const color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
-  document.documentElement.style.setProperty('--accent-color', color);
-})();
-
 // DOM ready handler
 function docReady(fn) {
   if (document.readyState === "complete" || document.readyState === "interactive") {
@@ -97,54 +82,49 @@ function docReady(fn) {
   }
 }
 
-// Main setup
 docReady(function() {
   // Initialize books
-  initBooks('.image-scroll');         // Desktop
-  initBooks('.mobile-image-scroll');  // Mobile
+  initBooks('.image-scroll'); // Desktop
+  initBooks('.mobile-image-scroll'); // Mobile
 
   // Mobile tab switching
   const tabs = document.querySelectorAll('.mobile-tab');
   tabs.forEach(tab => {
-    tab.addEventListener('click', function () {
+    tab.addEventListener('click', function() {
       document.querySelectorAll('.mobile-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.mobile-content').forEach(c => c.classList.remove('active'));
-
       this.classList.add('active');
       const tabId = this.getAttribute('data-tab');
       const contentDiv = document.getElementById(tabId);
       contentDiv.classList.add('active');
 
-      // Reset scrollTop after showing tab
+      // Scroll "about" tab to top on click
       if (tabId === 'about') {
-        requestAnimationFrame(() => {
-          contentDiv.scrollTop = 0;
-        });
+        contentDiv.scrollTop = 0;
       }
     });
   });
 
-  // Scroll left-side to bottom on load (desktop)
+  // Scroll to bottom on load
   const leftSide = document.querySelector('.left-side');
   if (leftSide) {
     leftSide.scrollTop = leftSide.scrollHeight;
   }
 });
 
-// Initialize book containers
 function initBooks(containerSelector) {
   const containers = document.querySelectorAll(containerSelector);
   if (!containers.length) return;
 
   containers.forEach(container => {
     container.innerHTML = '';
+
     books.forEach((book, bookIndex) => {
       createBookElement(book, bookIndex, container);
     });
   });
 }
 
-// Create individual book element
 function createBookElement(book, bookIndex, container) {
   const bookContainer = document.createElement('div');
   bookContainer.className = 'book-container';
@@ -154,7 +134,7 @@ function createBookElement(book, bookIndex, container) {
   const closeBtn = document.createElement('div');
   closeBtn.className = 'close-btn';
   closeBtn.innerHTML = '✕';
-  closeBtn.addEventListener('click', function (e) {
+  closeBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     resetToCover(bookContainer);
   });
@@ -169,8 +149,7 @@ function createBookElement(book, bookIndex, container) {
   bookContainer.appendChild(closeBtn);
   container.appendChild(bookContainer);
 
-  // Click to flip page
-  bookContainer.addEventListener('click', function (e) {
+  bookContainer.addEventListener('click', function(e) {
     if (e.target.classList.contains('close-btn')) return;
     if (img.dataset.isAnimating === 'true') return;
 
@@ -199,7 +178,6 @@ function createBookElement(book, bookIndex, container) {
   });
 }
 
-// Reset book to cover image
 function resetToCover(container) {
   const bookIndex = container.dataset.bookIndex;
   const img = container.querySelector('img');
